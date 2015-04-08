@@ -47,7 +47,7 @@ namespace Run_Grumpy_Run
 
         public void MiseAJour(MainPage mp)
         {
-            if (DateTime.Now > horloge.AddMilliseconds(200))
+            if (DateTime.Now > horloge.AddMilliseconds(100))
             {
                 horloge = DateTime.Now;
                 int new_x = this.X;
