@@ -6,6 +6,7 @@ using System.Windows.Ink;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace Run_Grumpy_Run
@@ -15,6 +16,7 @@ namespace Run_Grumpy_Run
         //position du perso
         public int X { get; set; }
         public int Y { get; set; }
+        private int image = 1;
 
         public DateTime horloge;
 
@@ -49,6 +51,40 @@ namespace Run_Grumpy_Run
         {
             if (DateTime.Now > horloge.AddMilliseconds(100))
             {
+
+                        if (EtatClavier.ToucheEnfoncee(Key.Z))
+                        {
+                            ImageBrush brush = new ImageBrush();
+                            brush.ImageSource = new BitmapImage(new Uri(@"image/palyer/grumpy_back" + image + ".png", UriKind.Relative)); ;
+                            rect.Fill = brush;
+                        }
+                        if (EtatClavier.ToucheEnfoncee(Key.S))
+                        {
+                            ImageBrush brush = new ImageBrush();
+                            brush.ImageSource = new BitmapImage(new Uri(@"image/palyer/grumpy" + image + ".png", UriKind.Relative)); ;
+                            rect.Fill = brush;
+                        }
+                        // Déplacement gauche / droite
+                        if (EtatClavier.ToucheEnfoncee(Key.D))
+                        {
+                            ImageBrush brush = new ImageBrush();
+                            brush.ImageSource = new BitmapImage(new Uri(@"image/palyer/grumpy_right" + image + ".png", UriKind.Relative)); ;
+                            rect.Fill = brush;
+                        }
+                        if (EtatClavier.ToucheEnfoncee(Key.Q))
+                        {
+                            ImageBrush brush = new ImageBrush();
+                            brush.ImageSource = new BitmapImage(new Uri(@"image/palyer/grumpy_left" + image + ".png", UriKind.Relative)); ;
+                            rect.Fill = brush;
+                        }
+                        image += 1;
+                if (image >=3)
+                {
+                    image = 1;
+                }
+                }
+            if (DateTime.Now > horloge.AddMilliseconds(300))
+            {
                 horloge = DateTime.Now;
                 int new_x = this.X;
                 int new_y = this.Y;
@@ -57,19 +93,31 @@ namespace Run_Grumpy_Run
                 if (EtatClavier.ToucheEnfoncee(Key.Z))
                 {
                     new_y -= 32;
+                    ImageBrush brush = new ImageBrush();
+                    brush.ImageSource = new BitmapImage(new Uri(@"image/palyer/grumpy_back1.png", UriKind.Relative)); ;
+                    rect.Fill = brush;
                 }
                 if (EtatClavier.ToucheEnfoncee(Key.S))
                 {
                     new_y += 32;
+                    ImageBrush brush = new ImageBrush();
+                    brush.ImageSource = new BitmapImage(new Uri(@"image/palyer/grumpy1.png", UriKind.Relative)); ;
+                    rect.Fill = brush;
                 }
                 // Déplacement gauche / droite
                 if (EtatClavier.ToucheEnfoncee(Key.D))
                 {
                     new_x += 32;
+                    ImageBrush brush = new ImageBrush();
+                    brush.ImageSource = new BitmapImage(new Uri(@"image/palyer/grumpy_right1.png", UriKind.Relative)); ;
+                    rect.Fill = brush;
                 }
                 if (EtatClavier.ToucheEnfoncee(Key.Q))
                 {
                     new_x -= 32;
+                    ImageBrush brush = new ImageBrush();
+                    brush.ImageSource = new BitmapImage(new Uri(@"image/palyer/grumpy_left1.png", UriKind.Relative)); ;
+                    rect.Fill = brush;
                 }
                 // Vérification du déplacement
                 if (mp.Zone_OK(new_x, new_y, (int)this.rect.Width, (int)this.rect.Height))

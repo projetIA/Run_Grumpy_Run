@@ -17,6 +17,10 @@
 		<Canvas.Background>
 			<ImageBrush Stretch="Fill" ImageSource="map.png"/>
 		</Canvas.Background>
-		<local:player x:Name="x_player" Canvas.Left="64" Canvas.Top="32"/>
+		<local:player x:Name="x_player" Canvas.Left="64" Canvas.Top="32">
+			<local:player.Background>
+				<ImageBrush Stretch="Fill"/>
+			</local:player.Background>
+		</local:player>
 	</Canvas>
 </UserControl>

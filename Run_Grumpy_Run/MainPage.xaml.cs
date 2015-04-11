@@ -75,7 +75,7 @@ namespace Run_Grumpy_Run
         {
             // Boucle de jeu
             x_player.MiseAJour(this);
-            System.Threading.Thread.Sleep(20);
+            //System.Threading.Thread.Sleep(20);
         }
     }
 }

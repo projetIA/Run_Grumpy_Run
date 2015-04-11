@@ -8,9 +8,12 @@
 	d:DesignWidth="640" d:DesignHeight="480" Width="32" Height="32" Loaded="UserControl_Loaded">
 
 	<Canvas x:Name="LayoutRoot">
+		<Canvas.Background>
+			<ImageBrush Stretch="Fill"/>
+		</Canvas.Background>
 		<Rectangle x:Name="rect" Height="32" Stroke="Black" Width="32" StrokeThickness="0">
 			<Rectangle.Fill>
-				<ImageBrush Stretch="Fill" ImageSource="grumpy.png"/>
+				<ImageBrush Stretch="Fill" ImageSource="image/palyer/grumpy1.png"/>
 			</Rectangle.Fill>
 		</Rectangle>
 	</Canvas>

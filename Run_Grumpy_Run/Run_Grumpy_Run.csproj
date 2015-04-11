@@ -102,7 +102,18 @@
     <None Include="Properties\AppManifest.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="grumpy.png" />
+    <Resource Include="image\palyer\grumpy2.png" />
+    <Resource Include="image\palyer\grumpy3.png" />
+    <Resource Include="image\palyer\grumpy_back1.png" />
+    <Resource Include="image\palyer\grumpy_back2.png" />
+    <Resource Include="image\palyer\grumpy_back3.png" />
+    <Resource Include="image\palyer\grumpy_left1.png" />
+    <Resource Include="image\palyer\grumpy_left2.png" />
+    <Resource Include="image\palyer\grumpy_left3.png" />
+    <Resource Include="image\palyer\grumpy_right1.png" />
+    <Resource Include="image\palyer\grumpy_right2.png" />
+    <Resource Include="image\palyer\grumpy_right3.png" />
+    <Resource Include="image\palyer\grumpy1.png" />
     <Resource Include="map.png" />
     <Resource Include="parquet.png" />
   </ItemGroup>
