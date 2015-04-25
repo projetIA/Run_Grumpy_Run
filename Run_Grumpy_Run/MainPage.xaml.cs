@@ -23,49 +23,45 @@ namespace Run_Grumpy_Run
 
             //liste murs
             liste_fixe = new List<murs>();
-            liste_fixe.Add(new murs(224, 32));
-            liste_fixe.Add(new murs(320, 32));
-            liste_fixe.Add(new murs(512, 32));
-            liste_fixe.Add(new murs(608, 32));
-            liste_fixe.Add(new murs(704, 32));
-            for (int x = 32; x <= 160; x +=32 )
+            liste_fixe.Add(new murs(192, 32));
+            liste_fixe.Add(new murs(288, 32));
+            liste_fixe.Add(new murs(480, 32));
+            liste_fixe.Add(new murs(576, 32));
+            liste_fixe.Add(new murs(672, 32));
+            for (int x = 32; x <= 128; x += 32 )
             {
                  liste_fixe.Add(new murs(x, 192));
             }
             for (int y = 96; y <= 192; y += 32)
             {
-                liste_fixe.Add(new murs(224, y));
+                liste_fixe.Add(new murs(192, y));
             }
 
-            // Ajout des éléments mobiles
+
             liste_ennemis = new List<Nurse>();
-            int nb_nurse = 0;
-            Random rand = new Random();
+            
+            Nurse nurse = new Nurse(416, 160);
+            this.LayoutRoot.Children.Add(nurse);
+            liste_ennemis.Add(nurse);
 
-            int _x = rand.Next(11) * 32;
-            int _y = rand.Next(11) * 32;
+            Nurse  nurse1= new Nurse(292, 256);
+            this.LayoutRoot.Children.Add(nurse1);
+            liste_ennemis.Add(nurse1);
 
-            this.DebugBox.Text = "testing";
-
-            if (this.Zone_OK(_x, _y, 32, 32))
-            {
-                Nurse nur = new Nurse(_x, _y);
-                this.DebugBox.Text = "great";
-                this.LayoutRoot.Children.Add(nur);
-                liste_ennemis.Add(nur);
-                nb_nurse++;
-            }
-
+            Nurse nurse2 = new Nurse(448, 352);
+            this.LayoutRoot.Children.Add(nurse2);
+            liste_ennemis.Add(nurse2);
         }
 
         public bool Zone_OK(int _x, int _y, int _width, int _height)
         {
+
             // Test murs extérieurs
-            if (_x < 32 || _x > this.LayoutRoot.ActualWidth - _width - 32)
+            if (_x < 32 || _x > this.LayoutRoot.ActualWidth - _width)
             {
                 return false;
             }
-            if (_y < 32 || _y > this.LayoutRoot.ActualHeight - _width - 32)
+            if (_y < 32 || _y > this.LayoutRoot.ActualHeight - _height)
             {
                 return false;
             }

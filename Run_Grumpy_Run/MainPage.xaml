@@ -13,11 +13,12 @@
         </LinearGradientBrush>
     </UserControl.Background>
 
-    <Canvas x:Name="LayoutRoot">
+    <Canvas x:Name="LayoutRoot" Height="832" Width="1440" Margin="9,0,-9,0">
         <Canvas.Background>
             <ImageBrush Stretch="Fill" ImageSource="map.png"/>
         </Canvas.Background>
         <local:player x:Name="x_player" Canvas.Left="64" Canvas.Top="32"/>
         <TextBlock x:Name="DebugBox" TextWrapping="Wrap" Height="32" Width="215" Foreground="Black"/>
+        <TextBlock x:Name="wallList" Canvas.Left="229" TextWrapping="Wrap" Height="226" Width="84" Canvas.Top="10"/>
     </Canvas>
 </UserControl>
