@@ -79,6 +79,9 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="murs.cs" />
+    <Compile Include="Nurse.xaml.cs">
+      <DependentUpon>Nurse.xaml</DependentUpon>
+    </Compile>
     <Compile Include="player.xaml.cs">
       <DependentUpon>player.xaml</DependentUpon>
     </Compile>
@@ -90,6 +93,10 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Nurse.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -107,6 +114,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="grumpy1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="nurse.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -6,17 +6,18 @@
     xmlns:local="clr-namespace:Run_Grumpy_Run" x:Class="Run_Grumpy_Run.MainPage"
     mc:Ignorable="d"
     d:DesignHeight="799.5" d:DesignWidth="1439.5" Width="Auto" Height="832" Loaded="UserControl_Loaded">
-	<UserControl.Background>
-		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-			<GradientStop Color="Black" Offset="0"/>
-			<GradientStop Color="White" Offset="1"/>
-		</LinearGradientBrush>
-	</UserControl.Background>
+    <UserControl.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="Black" Offset="0"/>
+            <GradientStop Color="White" Offset="1"/>
+        </LinearGradientBrush>
+    </UserControl.Background>
 
-	<Canvas x:Name="LayoutRoot" Width="1440">
-		<Canvas.Background>
-			<ImageBrush Stretch="Fill" ImageSource="map.png"/>
-		</Canvas.Background>
-		<local:player x:Name="x_player" Canvas.Left="64" Canvas.Top="32"/>
-	</Canvas>
+    <Canvas x:Name="LayoutRoot">
+        <Canvas.Background>
+            <ImageBrush Stretch="Fill" ImageSource="map.png"/>
+        </Canvas.Background>
+        <local:player x:Name="x_player" Canvas.Left="64" Canvas.Top="32"/>
+        <TextBlock x:Name="DebugBox" TextWrapping="Wrap" Height="32" Width="215" Foreground="Black"/>
+    </Canvas>
 </UserControl>

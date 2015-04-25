@@ -15,6 +15,7 @@ namespace Run_Grumpy_Run
     public partial class MainPage : UserControl
     {
         private List<murs> liste_fixe;
+        private List<Nurse> liste_ennemis;
 
         public MainPage()
         {
@@ -35,7 +36,26 @@ namespace Run_Grumpy_Run
             {
                 liste_fixe.Add(new murs(224, y));
             }
-               
+
+            // Ajout des éléments mobiles
+            liste_ennemis = new List<Nurse>();
+            int nb_nurse = 0;
+            Random rand = new Random();
+
+            int _x = rand.Next(11) * 32;
+            int _y = rand.Next(11) * 32;
+
+            this.DebugBox.Text = "testing";
+
+            if (this.Zone_OK(_x, _y, 32, 32))
+            {
+                Nurse nur = new Nurse(_x, _y);
+                this.DebugBox.Text = "great";
+                this.LayoutRoot.Children.Add(nur);
+                liste_ennemis.Add(nur);
+                nb_nurse++;
+            }
+
         }
 
         public bool Zone_OK(int _x, int _y, int _width, int _height)
