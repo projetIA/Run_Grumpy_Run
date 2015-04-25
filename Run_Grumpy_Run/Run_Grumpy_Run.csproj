@@ -102,9 +102,11 @@
     <None Include="Properties\AppManifest.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="grumpy.png" />
     <Resource Include="map.png" />
     <Resource Include="parquet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="grumpy1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

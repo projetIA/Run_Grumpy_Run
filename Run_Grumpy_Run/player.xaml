@@ -10,7 +10,7 @@
 	<Canvas x:Name="LayoutRoot">
 		<Rectangle x:Name="rect" Height="32" Stroke="Black" Width="32" StrokeThickness="0">
 			<Rectangle.Fill>
-				<ImageBrush Stretch="Fill" ImageSource="grumpy.png"/>
+                <ImageBrush Stretch="Fill" ImageSource="grumpy1.png"/>
 			</Rectangle.Fill>
 		</Rectangle>
 	</Canvas>
