@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-﻿<xapCache source="C:\Users\Florian\Documents\GitHub\Run_Grumpy_Run\Run_Grumpy_Run\Bin\Debug\Run_Grumpy_Run.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="23/04/2015 13:13:48">
-  <file source="C:\Users\Florian\Documents\GitHub\Run_Grumpy_Run\Run_Grumpy_Run\obj\Debug\Run_Grumpy_Run.dll" archivePath="Run_Grumpy_Run.dll" lastWriteTime="23/04/2015 13:13:46" />
+﻿<xapCache source="C:\Users\Florian\Documents\GitHub\Run_Grumpy_Run\Run_Grumpy_Run\Bin\Debug\Run_Grumpy_Run.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="26/04/2015 13:37:48">
+  <file source="C:\Users\Florian\Documents\GitHub\Run_Grumpy_Run\Run_Grumpy_Run\obj\Debug\Run_Grumpy_Run.dll" archivePath="Run_Grumpy_Run.dll" lastWriteTime="26/04/2015 13:37:48" />
   <file source="C:\Users\Florian\Documents\GitHub\Run_Grumpy_Run\Run_Grumpy_Run\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="11/04/2015 13:22:46" />
-=======
-﻿<xapCache source="C:\Users\Karegan\Desktop\Run_Grumpy_Run\Run_Grumpy_Run\Bin\Debug\Run_Grumpy_Run.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="08/04/2015 19:05:00">
-  <file source="C:\Users\Karegan\Desktop\Run_Grumpy_Run\Run_Grumpy_Run\obj\Debug\Run_Grumpy_Run.dll" archivePath="Run_Grumpy_Run.dll" lastWriteTime="08/04/2015 19:05:00" />
-  <file source="C:\Users\Karegan\Desktop\Run_Grumpy_Run\Run_Grumpy_Run\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="21/03/2015 14:57:47" />
->>>>>>> f3dcbc6a7992e5a83560beeb46725e87ac829670
 </xapCache>
