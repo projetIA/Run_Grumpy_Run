@@ -118,6 +118,12 @@
   <ItemGroup>
     <Resource Include="nurse.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ecape.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="GameOver.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

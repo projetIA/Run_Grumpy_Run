@@ -111,10 +111,7 @@ namespace Run_Grumpy_Run
                 foreach (Nurse nurse in liste_ennemis)
                 {
                     nurse.MiseAJour();
-                }
 
-                foreach (Nurse nurse in liste_ennemis)
-                {
                     if ((nurse.X == x_player.X) && (nurse.Y == x_player.Y))
                     {
                         this.GameOver = true;
@@ -125,7 +122,13 @@ namespace Run_Grumpy_Run
             }
             else
             {
-                this.gameover.Visibility = System.Windows.Visibility.Visible;
+                this.gameOver.Visibility = System.Windows.Visibility.Visible;
+                x_player.Visibility = System.Windows.Visibility.Collapsed;
+
+                foreach (Nurse nurse in liste_ennemis)
+                {
+                    nurse.Visibility = System.Windows.Visibility.Collapsed;
+                }
             }
         }
     }
