@@ -16,39 +16,43 @@ namespace Run_Grumpy_Run
     {
         private List<murs> liste_fixe;
         private List<Nurse> liste_ennemis;
+        public bool GameOver;
 
         public MainPage()
         {
             InitializeComponent();
 
+            this.GameOver = false;
+
             //liste murs
             liste_fixe = new List<murs>();
-            liste_fixe.Add(new murs(192, 32));
-            liste_fixe.Add(new murs(288, 32));
-            liste_fixe.Add(new murs(480, 32));
-            liste_fixe.Add(new murs(576, 32));
-            liste_fixe.Add(new murs(672, 32));
-            for (int x = 32; x <= 128; x += 32 )
+            liste_fixe.Add(new murs(224, 32));
+            liste_fixe.Add(new murs(320, 32));
+            liste_fixe.Add(new murs(512, 32));
+            liste_fixe.Add(new murs(608, 32));
+            liste_fixe.Add(new murs(710, 32));
+
+            for (int x = 32; x <= 160; x += 32 )
             {
                  liste_fixe.Add(new murs(x, 192));
             }
             for (int y = 96; y <= 192; y += 32)
             {
-                liste_fixe.Add(new murs(192, y));
+                liste_fixe.Add(new murs(224, y));
             }
 
 
             liste_ennemis = new List<Nurse>();
             
-            Nurse nurse = new Nurse(416, 160);
-            this.LayoutRoot.Children.Add(nurse);
-            liste_ennemis.Add(nurse);
+            Nurse nurse0 = new Nurse("Billy Bob",416, 160, this);
+            this.LayoutRoot.Children.Add(nurse0);
+            liste_ennemis.Add(nurse0);
 
-            Nurse  nurse1= new Nurse(292, 256);
+            Nurse  nurse1= new Nurse("Marty", 292, 256, this);
             this.LayoutRoot.Children.Add(nurse1);
             liste_ennemis.Add(nurse1);
 
-            Nurse nurse2 = new Nurse(448, 352);
+            Nurse nurse2 = new Nurse("Kathyusha", 448, 352, this);
             this.LayoutRoot.Children.Add(nurse2);
             liste_ennemis.Add(nurse2);
         }
@@ -57,11 +61,11 @@ namespace Run_Grumpy_Run
         {
 
             // Test murs extérieurs
-            if (_x < 32 || _x > this.LayoutRoot.ActualWidth - _width)
+            if (_x < 32 || _x > this.LayoutRoot.ActualWidth - _width -32)
             {
                 return false;
             }
-            if (_y < 32 || _y > this.LayoutRoot.ActualHeight - _height)
+            if (_y < 32 || _y > this.LayoutRoot.ActualHeight - _height -32)
             {
                 return false;
             }
@@ -74,6 +78,17 @@ namespace Run_Grumpy_Run
                 }
             }
 
+<<<<<<< HEAD
+=======
+            // test mobs
+            foreach (Nurse nurse in liste_ennemis)
+            {
+                if( (nurse.X == _x) && (nurse.Y == _y) )
+                {
+                    return false;
+                }
+            }
+>>>>>>> 785d7a8d721b63ea5a28674b4ce46d772ec2a7af
             // A rajouter plus tard
             // Tout est OK
             return true;
@@ -90,9 +105,34 @@ namespace Run_Grumpy_Run
 
         public void CompositionTarget_Rendering(object sender, EventArgs e)
         {
-            // Boucle de jeu
-            x_player.MiseAJour(this);
-            System.Threading.Thread.Sleep(20);
+
+            if (this.GameOver == false)
+            {
+
+                x_player.MiseAJour(this);
+
+                foreach (Nurse nurse in liste_ennemis)
+                {
+                    nurse.MiseAJour();
+
+                    if ((nurse.X == x_player.X) && (nurse.Y == x_player.Y))
+                    {
+                        this.GameOver = true;
+                    }
+                }
+
+                System.Threading.Thread.Sleep(20);
+            }
+            else
+            {
+                this.gameOver.Visibility = System.Windows.Visibility.Visible;
+                x_player.Visibility = System.Windows.Visibility.Collapsed;
+
+                foreach (Nurse nurse in liste_ennemis)
+                {
+                    nurse.Visibility = System.Windows.Visibility.Collapsed;
+                }
+            }
         }
     }
 }

@@ -17,8 +17,15 @@
         <Canvas.Background>
             <ImageBrush Stretch="Fill" ImageSource="map.png"/>
         </Canvas.Background>
-        <local:player x:Name="x_player" Canvas.Left="64" Canvas.Top="32"/>
+        <local:player x:Name="x_player" Canvas.Left="64" Canvas.Top="32" Canvas.ZIndex="2"/>
         <TextBlock x:Name="DebugBox" TextWrapping="Wrap" Height="32" Width="215" Foreground="Black"/>
-        <TextBlock x:Name="wallList" Canvas.Left="229" TextWrapping="Wrap" Height="226" Width="84" Canvas.Top="10"/>
+        <Rectangle x:Name="gameOver" Height="832" Stroke="Black" Width="1440" Visibility="Collapsed">
+            <Rectangle.OpacityMask>
+                <ImageBrush Stretch="UniformToFill" ImageSource="GameOver.png"/>
+            </Rectangle.OpacityMask>
+            <Rectangle.Fill>
+                <ImageBrush Stretch="UniformToFill" ImageSource="GameOver.png"/>
+            </Rectangle.Fill>
+        </Rectangle>
     </Canvas>
 </UserControl>
