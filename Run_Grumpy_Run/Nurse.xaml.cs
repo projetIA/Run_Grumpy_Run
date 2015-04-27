@@ -47,11 +47,13 @@ namespace Run_Grumpy_Run
 
         public void MiseAJour()
         {
-            if (DateTime.Now > horloge.AddMilliseconds(300))
+            if (DateTime.Now > horloge.AddMilliseconds(100))
             {
                 horloge = DateTime.Now;
                 int newX = this.X;
                 int newY = this.Y;
+
+                this.direction = RandomDirection();
 
                 switch (this.direction)
                 {
@@ -78,7 +80,7 @@ namespace Run_Grumpy_Run
                 else
                 {
                     // Si le mob est coincé, une nouvelle direction est générée aleatoirement.
-                    this.direction = RandomDirection();
+                    
                 }
 
                 // Affichage à la nouvelle position
