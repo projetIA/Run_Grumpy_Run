@@ -48,11 +48,13 @@ namespace Run_Grumpy_Run
 
         public void MiseAJour()
         {
-            if (DateTime.Now > horloge.AddMilliseconds(50))
+            if (DateTime.Now > horloge.AddMilliseconds(100))
             {
                 horloge = DateTime.Now;
                 int newX = this.X;
                 int newY = this.Y;
+
+                this.direction = RandomDirection();
 
                 switch (this.direction)
                 {
@@ -71,9 +73,6 @@ namespace Run_Grumpy_Run
                 }
 
                 this.count--;
-
-                this.MP.DebugBox.Text = Environment.NewLine + this.count;
-
                 if (count == 0)
                 {
                     this.direction = RandomDirection();
