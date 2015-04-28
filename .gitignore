@@ -1,2 +1,4 @@
-Run_Grumpy_Run/Bin/Debug/*
+*.suo
+Run_Grumpy_Run/Bin/Debug/
+Run_Grumpy_Run/obj/Debug/
 Debug Console/

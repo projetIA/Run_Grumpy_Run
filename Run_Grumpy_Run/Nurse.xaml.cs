@@ -23,6 +23,7 @@ namespace Run_Grumpy_Run
         
         public enum Direction { droite, haut, bas, gauche };
         public Direction direction { get; set; }
+        public int count { get; set; }
 
 
         public Nurse(string name, int x, int y, MainPage mp)
@@ -71,6 +72,12 @@ namespace Run_Grumpy_Run
                         break;
                 }
 
+                this.count--;
+                if (count == 0)
+                {
+                    this.direction = RandomDirection();
+                }
+
                 // Vérification du déplacement
                 if (MP.Zone_OK(newX, newY, 32, 32))
                 {
@@ -80,7 +87,7 @@ namespace Run_Grumpy_Run
                 else
                 {
                     // Si le mob est coincé, une nouvelle direction est générée aleatoirement.
-                    
+                    this.direction = RandomDirection();
                 }
 
                 // Affichage à la nouvelle position
@@ -110,7 +117,7 @@ namespace Run_Grumpy_Run
                     break;
             }
 
-            //this.MP.DebugBox.Text += Environment.NewLine + this.name + ": " + dir.ToString() ;
+            this.count = rand.Next(2,15);
             return dir;
         }
     }
