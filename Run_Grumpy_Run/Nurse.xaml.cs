@@ -23,6 +23,7 @@ namespace Run_Grumpy_Run
         
         public enum Direction { droite, haut, bas, gauche };
         public Direction direction { get; set; }
+        public int count { get; set; }
 
 
         public Nurse(string name, int x, int y, MainPage mp)
@@ -47,7 +48,7 @@ namespace Run_Grumpy_Run
 
         public void MiseAJour()
         {
-            if (DateTime.Now > horloge.AddMilliseconds(300))
+            if (DateTime.Now > horloge.AddMilliseconds(50))
             {
                 horloge = DateTime.Now;
                 int newX = this.X;
@@ -67,6 +68,15 @@ namespace Run_Grumpy_Run
                     case Direction.bas:
                         newY += 32;
                         break;
+                }
+
+                this.count--;
+
+                this.MP.DebugBox.Text = Environment.NewLine + this.count;
+
+                if (count == 0)
+                {
+                    this.direction = RandomDirection();
                 }
 
                 // Vérification du déplacement
@@ -108,7 +118,7 @@ namespace Run_Grumpy_Run
                     break;
             }
 
-            //this.MP.DebugBox.Text += Environment.NewLine + this.name + ": " + dir.ToString() ;
+            this.count = rand.Next(2,15);
             return dir;
         }
     }

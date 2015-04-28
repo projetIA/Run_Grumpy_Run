@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="clr-namespace:Run_Grumpy_Run" x:Class="Run_Grumpy_Run.MainPage"
+    xmlns:local="clr-namespace:Run_Grumpy_Run" xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" x:Class="Run_Grumpy_Run.MainPage"
     mc:Ignorable="d"
     d:DesignHeight="799.5" d:DesignWidth="1439.5" Width="Auto" Height="832" Loaded="UserControl_Loaded">
     <UserControl.Background>
