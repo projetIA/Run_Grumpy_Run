@@ -139,6 +139,8 @@ namespace Run_Grumpy_Run
 
                 foreach (Nurse nurse in liste_ennemis)
                 {
+                    Random rand = new Random();
+                    System.Threading.Thread.Sleep(rand.Next(20));
                     nurse.MiseAJour();
 
                     if ((nurse.X == x_player.X) && (nurse.Y == x_player.Y))
