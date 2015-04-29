@@ -16,14 +16,14 @@ namespace Run_Grumpy_Run
     {
         private List<murs> liste_fixe;
         private List<Nurse> liste_ennemis;
-        public bool GameOver;
+        public int GameOver;
         private int[,] map { get; set; }
 
         public MainPage()
         {
             InitializeComponent();
 
-            this.GameOver = false;
+            this.GameOver = 0;
 
             //liste murs
             liste_fixe = new List<murs>();
@@ -132,7 +132,7 @@ namespace Run_Grumpy_Run
         public void CompositionTarget_Rendering(object sender, EventArgs e)
         {
             this.DebugBox.Text = x_player.image.ToString();
-            if (this.GameOver == false)
+            if (this.GameOver == 0)
             {
 
                 x_player.MiseAJour(this);
@@ -145,14 +145,29 @@ namespace Run_Grumpy_Run
 
                     if ((nurse.X == x_player.X) && (nurse.Y == x_player.Y))
                     {
-                        this.GameOver = true;
+                        this.GameOver = 1;
                     }
                 }
 
+                if ((x_player.X == 1376) && (x_player.Y == 64 ))
+                {
+                    this.GameOver = 2;
+                }
+
+            }
+            else if (this.GameOver == 1)
+            {
+                this.gameOver.Visibility = System.Windows.Visibility.Visible;
+                x_player.Visibility = System.Windows.Visibility.Collapsed;
+
+                foreach (Nurse nurse in liste_ennemis)
+                {
+                    nurse.Visibility = System.Windows.Visibility.Collapsed;
+                }
             }
             else
             {
-                this.gameOver.Visibility = System.Windows.Visibility.Visible;
+                this.win.Visibility = System.Windows.Visibility.Visible;
                 x_player.Visibility = System.Windows.Visibility.Collapsed;
 
                 foreach (Nurse nurse in liste_ennemis)
