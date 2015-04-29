@@ -17,7 +17,11 @@
         <Canvas.Background>
             <ImageBrush Stretch="Fill" ImageSource="map.png"/>
         </Canvas.Background>
-        <local:player x:Name="x_player" Canvas.Left="64" Canvas.Top="32" Canvas.ZIndex="2"/>
+        <local:player x:Name="x_player" Canvas.Left="64" Canvas.Top="32" Canvas.ZIndex="2">
+        <local:player.Background>
+            <ImageBrush Stretch="Fill"/>
+        </local:player.Background>
+        </local:player>
         <TextBlock x:Name="DebugBox" TextWrapping="Wrap" Height="32" Width="215" Foreground="Black"/>
         <Rectangle x:Name="gameOver" Height="832" Stroke="Black" Width="1440" Visibility="Collapsed">
             <Rectangle.OpacityMask>
