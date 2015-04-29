@@ -16,7 +16,6 @@ namespace Run_Grumpy_Run
     {
         public int X { get; set; }
         public int Y { get; set; }
-        public string name { get; set; }
 
         public MainPage MP {get;set;}
         public DateTime horloge;
@@ -26,7 +25,7 @@ namespace Run_Grumpy_Run
         public int count { get; set; }
 
 
-        public Nurse(string name, int x, int y, MainPage mp)
+        public Nurse(int x, int y, MainPage mp)
         {
             InitializeComponent();
 
@@ -34,8 +33,7 @@ namespace Run_Grumpy_Run
             this.MP = mp;
             this.X = x;
             this.Y = y;
-            this.name = name;
-            this.direction = RandomDirection();
+            RandomDirection();
 
             this.Draw();
         }
@@ -48,18 +46,39 @@ namespace Run_Grumpy_Run
 
         public void MiseAJour()
         {
-            if (DateTime.Now > horloge.AddMilliseconds(100))
+            if (DateTime.Now > horloge.AddMilliseconds(200))
             {
                 horloge = DateTime.Now;
                 int newX = this.X;
                 int newY = this.Y;
-
-                this.direction = RandomDirection();
+                
+                Random rand = new Random();
+                int d = rand.Next(5);
+                   
+                // Déplacement 
+                if (d == 3 || d == 4)
+                {
+                    switch (this.direction)
+                    {
+                        case Direction.haut:
+                            this.direction = (d == 3 ? Direction.droite : Direction.gauche);
+                            break;
+                        case Direction.bas:
+                            this.direction = (d == 3 ? Direction.gauche : Direction.droite);
+                            break;
+                        case Direction.droite:
+                            this.direction = (d == 3 ? Direction.bas : Direction.haut);
+                            break;
+                        case Direction.gauche:
+                            this.direction = (d == 3 ? Direction.haut : Direction.bas);
+                            break;
+                    }
+                }
 
                 switch (this.direction)
                 {
                     case Direction.gauche:
-                        newX -= 32;
+                    newX -= 32;
                         break;
                     case Direction.droite:
                         newX += 32;
@@ -72,12 +91,6 @@ namespace Run_Grumpy_Run
                         break;
                 }
 
-                this.count--;
-                if (count == 0)
-                {
-                    this.direction = RandomDirection();
-                }
-
                 // Vérification du déplacement
                 if (MP.Zone_OK(newX, newY, 32, 32))
                 {
@@ -87,38 +100,33 @@ namespace Run_Grumpy_Run
                 else
                 {
                     // Si le mob est coincé, une nouvelle direction est générée aleatoirement.
-                    this.direction = RandomDirection();
+                    this.RandomDirection();
                 }
-
                 // Affichage à la nouvelle position
                 this.Draw();
             }
         }
 
-        public Direction RandomDirection()
+        public void RandomDirection()
         {
             Random rand = new Random();
             int value = rand.Next(4);
-            Direction dir = Direction.haut; // set by default so Visual Studio is happy;
 
             switch (value)
             {
                 case 0:
-                    dir =  Direction.haut;
+                    this.direction = Direction.haut;
                     break;
                 case 1:
-                    dir = Direction.bas;
+                    this.direction = Direction.bas;
                     break;
                 case 2:
-                    dir = Direction.droite;
+                    this.direction = Direction.droite;
                     break;
                 case 3:
-                    dir = Direction.gauche;
+                    this.direction = Direction.gauche;
                     break;
             }
-
-            this.count = rand.Next(2,15);
-            return dir;
         }
     }
 }
