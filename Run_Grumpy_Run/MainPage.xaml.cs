@@ -131,7 +131,7 @@ namespace Run_Grumpy_Run
 
         public void CompositionTarget_Rendering(object sender, EventArgs e)
         {
-
+            this.DebugBox.Text = x_player.image.ToString();
             if (this.GameOver == false)
             {
 
@@ -149,7 +149,6 @@ namespace Run_Grumpy_Run
                     }
                 }
 
-                System.Threading.Thread.Sleep(20);
             }
             else
             {

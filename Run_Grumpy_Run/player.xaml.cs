@@ -6,6 +6,7 @@ using System.Windows.Ink;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace Run_Grumpy_Run
@@ -15,6 +16,8 @@ namespace Run_Grumpy_Run
         //position du perso
         public int X { get; set; }
         public int Y { get; set; }
+
+        public int image = 1;
 
         public DateTime horloge;
 
@@ -76,7 +79,40 @@ namespace Run_Grumpy_Run
                 {
                     this.X = new_x;
                     this.Y = new_y;
+
                 }
+                if (EtatClavier.ToucheEnfoncee(Key.Z))
+                {
+                    ImageBrush brush = new ImageBrush();
+                    brush.ImageSource = new BitmapImage(new Uri(@"images/player/grumpy_back" + image + ".png", UriKind.Relative));
+                    rect.Fill = brush;
+                }
+                if (EtatClavier.ToucheEnfoncee(Key.S))
+                {
+                    ImageBrush brush = new ImageBrush();
+                    brush.ImageSource = new BitmapImage(new Uri(@"images/player/grumpy" + image + ".png", UriKind.Relative));
+                    rect.Fill = brush;
+                }
+                // Déplacement gauche / droite
+                if (EtatClavier.ToucheEnfoncee(Key.D))
+                {
+                    ImageBrush brush = new ImageBrush();
+                    brush.ImageSource = new BitmapImage(new Uri(@"images/player/grumpy_right" + image + ".png", UriKind.Relative));
+                    rect.Fill = brush;
+                }
+                if (EtatClavier.ToucheEnfoncee(Key.Q))
+                {
+                    ImageBrush brush = new ImageBrush();
+                    brush.ImageSource = new BitmapImage(new Uri(@"images/player/grumpy_left" + image + ".png", UriKind.Relative));
+                    rect.Fill = brush;
+                }
+
+                image += 1;
+                if (image > 3)
+                {
+                    image = 1;
+                }
+
                 // Affichage à la nouvelle position
                 this.Draw();
             }

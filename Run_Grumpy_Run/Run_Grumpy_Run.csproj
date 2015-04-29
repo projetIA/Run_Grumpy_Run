@@ -113,10 +113,19 @@
     <None Include="Properties\AppManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="images\player\grumpy1.png" />
+    <Resource Include="images\player\grumpy2.png" />
+    <Resource Include="images\player\grumpy3.png" />
+    <Resource Include="images\player\grumpy_back1.png" />
+    <Resource Include="images\player\grumpy_back2.png" />
+    <Resource Include="images\player\grumpy_back3.png" />
+    <Resource Include="images\player\grumpy_left1.png" />
+    <Resource Include="images\player\grumpy_left2.png" />
+    <Resource Include="images\player\grumpy_left3.png" />
+    <Resource Include="images\player\grumpy_right1.png" />
+    <Resource Include="images\player\grumpy_right2.png" />
+    <Resource Include="images\player\grumpy_right3.png" />
     <Resource Include="map.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="grumpy1.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="nurse.png" />
@@ -124,6 +133,7 @@
   <ItemGroup>
     <Resource Include="GameOver.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
