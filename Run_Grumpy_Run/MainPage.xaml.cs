@@ -27,26 +27,27 @@ namespace Run_Grumpy_Run
 
             //liste murs
             liste_fixe = new List<murs>();
+            liste_ennemis = new List<Nurse>();
 
             this.map = new int[,] { {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, 
                                     {1,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1},
-                                    {1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1},
+                                    {1,0,0,0,0,0,0,0,0,0,1,0,0,0,3,0,1,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1},
                                     {1,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,1,1,0,1,0,0,1,0,0,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,0,1,1,1},
                                     {1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,1,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,1},
-                                    {1,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,1},
+                                    {1,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,1,0,0,1,0,0,3,0,0,0,1},
                                     {1,1,1,1,1,1,0,1,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1},
-                                    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1},
-                                    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,1},
+                                    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,3,0,0,0,1},
+                                    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,1},
                                     {1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,0,0,1,0,0,0,0,0,0,1}, 
                                     {1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,1,1,1,1,1,1,1,1}, 
                                     {1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,1}, 
-                                    {1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1}, 
+                                    {1,0,0,1,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1}, 
                                     {1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,1,1,1,1,1,1,0,1}, 
                                     {1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,1},
-                                    {1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,1,1,1,0,1,1,0,0,0,0,0,0,0,0,0,1},
+                                    {1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,1,1,1,0,1,1,0,0,0,0,0,3,0,0,0,1},
                                     {1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,1,0,0,1,0,0,0,0,0,0,1},
                                     {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,1,0,0,1,1,1,1,1,1,1,1},
-                                    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,0,0,0,0,0,0,1},
+                                    {1,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,1,0,0,0,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,0,0,0,0,0,0,1},
                                     {1,1,1,1,1,1,0,1,1,1,1,1,1,0,1,1,1,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
                                     {1,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1},
                                     {1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,1,1,1,0,1,1,0,1,1,1,1,0,0,0,0,0,0,1},
@@ -62,41 +63,18 @@ namespace Run_Grumpy_Run
                     {
                         liste_fixe.Add(new murs(j * 32, i * 32));
                     }
+                    else if (map[i, j] == 3)
+                    {
+                        //Nurse nurse = new Nurse(j * 32, i * 32, this);
+                        //this.LayoutRoot.Children.Add(nurse);
+                        //liste_ennemis.Add(nurse);
+                    }
                 }
             }
-
-
-            liste_ennemis = new List<Nurse>();
-            
-            Nurse nurse0 = new Nurse("Billy Bob",416, 160, this);
-            this.LayoutRoot.Children.Add(nurse0);
-            liste_ennemis.Add(nurse0);
-
-            Nurse  nurse1= new Nurse("Marty", 320, 256, this);
-            this.LayoutRoot.Children.Add(nurse1);
-            liste_ennemis.Add(nurse1);
-
-            Nurse nurse2 = new Nurse("Kathyusha", 448, 352, this);
-            this.LayoutRoot.Children.Add(nurse2);
-            liste_ennemis.Add(nurse2);
-
-            Nurse nurse3 = new Nurse("Blabla", 640, 256, this);
-            this.LayoutRoot.Children.Add(nurse3);
-            liste_ennemis.Add(nurse3);
         }
 
         public bool Zone_OK(int _x, int _y, int _width, int _height)
         {
-
-            // Test murs extérieurs
-            if (_x < 32 || _x > this.LayoutRoot.ActualWidth - _width -32)
-            {
-                return false;
-            }
-            if (_y < 32 || _y > this.LayoutRoot.ActualHeight - _height -32)
-            {
-                return false;
-            }
             // Test murs
             foreach (murs mur in liste_fixe)
             {
@@ -105,7 +83,6 @@ namespace Run_Grumpy_Run
                     return false;
                 }
             }
-
             // test mobs
             foreach (Nurse nurse in liste_ennemis)
             {
@@ -114,9 +91,6 @@ namespace Run_Grumpy_Run
                     return false;
                 }
             }
-
-            // A rajouter plus tard
-            // Tout est OK
             return true;
         }
 
@@ -124,6 +98,10 @@ namespace Run_Grumpy_Run
         {
         	// TODO : ajoutez ici l'implémentation du gestionnaire d'événements.
             CompositionTarget.Rendering += new EventHandler(CompositionTarget_Rendering);
+
+            Nurse nurse = new Nurse(12 * 32, 4 * 32, this);
+            this.LayoutRoot.Children.Add(nurse);
+            liste_ennemis.Add(nurse);
             
             EtatClavier.Ecouter(this);
             x_player.cnvPere = this.LayoutRoot;
@@ -131,29 +109,39 @@ namespace Run_Grumpy_Run
 
         public void CompositionTarget_Rendering(object sender, EventArgs e)
         {
-            
+
             if (this.GameOver == 0)
             {
-
+                //mise a jour du joueur
                 x_player.MiseAJour(this);
 
                 foreach (Nurse nurse in liste_ennemis)
                 {
+
                     Random rand = new Random();
                     System.Threading.Thread.Sleep(rand.Next(20));
                     this.DebugBox.Text = nurse.count.ToString();
+
+                    // mise a jour des nurses
+                    System.Threading.Thread.Sleep(1);
+
                     nurse.MiseAJour();
 
+                    // Detection d'une collision entre le joueur et une infirmiere, provoque la game over;
                     if ((nurse.X == x_player.X) && (nurse.Y == x_player.Y))
                     {
-                        this.GameOver = 1;
+                        // Allez, encore une autre partie
+                        this.GameOver = 0;
                     }
                 }
 
+                // arrivé a une positiotn, le joueur a gagné
                 if ((x_player.X == 1376) && (x_player.Y == 64 ))
                 {
+                    // Gagné
                     this.GameOver = 2;
                 }
+                System.Threading.Thread.Sleep(20);
 
             }
             else if (this.GameOver == 1)
@@ -176,6 +164,11 @@ namespace Run_Grumpy_Run
                     nurse.Visibility = System.Windows.Visibility.Collapsed;
                 }
             }
+        }
+
+        private void Pause_Click(object sender, RoutedEventArgs e)
+        {
+            System.Threading.Thread.Sleep(2000);
         }
     }
 }

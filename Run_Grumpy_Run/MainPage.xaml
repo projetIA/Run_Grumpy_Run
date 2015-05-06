@@ -36,5 +36,13 @@
                 <ImageBrush Stretch="UniformToFill" ImageSource="win.png"/>
             </Rectangle.Fill>
         </Rectangle>
+        <Button x:Name="Pause" Content="Button" Canvas.Left="433" Width="75" Foreground="Black" BorderBrush="{x:Null}" Click="Pause_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#FF2096A8" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
     </Canvas>
 </UserControl>
