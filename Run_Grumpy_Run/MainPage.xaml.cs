@@ -65,9 +65,9 @@ namespace Run_Grumpy_Run
                     }
                     else if (map[i, j] == 3)
                     {
-                        //Nurse nurse = new Nurse(j * 32, i * 32, this);
-                        //this.LayoutRoot.Children.Add(nurse);
-                        //liste_ennemis.Add(nurse);
+                        Nurse nurse = new Nurse(j * 32, i * 32, this);
+                        this.LayoutRoot.Children.Add(nurse);
+                        liste_ennemis.Add(nurse);
                     }
                 }
             }
@@ -98,10 +98,6 @@ namespace Run_Grumpy_Run
         {
         	// TODO : ajoutez ici l'implémentation du gestionnaire d'événements.
             CompositionTarget.Rendering += new EventHandler(CompositionTarget_Rendering);
-
-            Nurse nurse = new Nurse(12 * 32, 4 * 32, this);
-            this.LayoutRoot.Children.Add(nurse);
-            liste_ennemis.Add(nurse);
             
             EtatClavier.Ecouter(this);
             x_player.cnvPere = this.LayoutRoot;
@@ -161,7 +157,6 @@ namespace Run_Grumpy_Run
 
         private void Pause_Click(object sender, RoutedEventArgs e)
         {
-            System.Threading.Thread.Sleep(2000);
         }
     }
 }

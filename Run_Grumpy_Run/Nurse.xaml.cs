@@ -51,7 +51,7 @@ namespace Run_Grumpy_Run
         {
             if (DateTime.Now > horloge.AddMilliseconds(200))
             {
-                this.Detection();
+                //this.Detection();
                 //this.Deplacement();
                 this.Draw();
             }
@@ -126,14 +126,8 @@ namespace Run_Grumpy_Run
             // Calcul du vecteur
             int x = this.X - this.MP.x_player.X;
             int y = this.Y - this.MP.x_player.Y;
-            double longeur = Math.Sqrt((y * y) + (x * x));
+            double longeur = Math.Round(Math.Sqrt((y * y) + (x * x)));
 
-            // Deduction du sens de direction, gauche ou droite
-             double sens = (x < 0 ? -1 : 1);
-            // Calcul de la direction du vecteur
-            decimal direction = ( x == 0) ? 0 : Decimal.Divide(y, x);
-
-            
 
             // Les infirmieres ont une portée de detection de 10 cases dans toutes les direction
             if (longeur < 3200)
@@ -151,15 +145,15 @@ namespace Run_Grumpy_Run
                 int i = 0;
                 bool end = false;
                 
-                while( (i < 100) || (end == false))
+                while( (i < longeur) || (end == false))
                 {
-                    pointX += x / 100;
-                    pointY += y / 100;
+                    pointX += x / longeur;
+                    pointY += y / longeur;
 
                     //tempX = x / 32;
                     //tempY = y / 32;
-                    //caseX = Math.Round(tempX , 0);
-
+                    caseX = Math.Round( pointX / 32 , 2 );
+                    caseY = Math.Round( pointY / 32 , 2 );
                     i++;
                 }
 
