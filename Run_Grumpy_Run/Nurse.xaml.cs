@@ -117,7 +117,7 @@ namespace Run_Grumpy_Run
                     break;
             }
 
-            this.count = rand.Next(2,15);
+            this.count = rand.Next(5,25);
             return dir;
         }
     }

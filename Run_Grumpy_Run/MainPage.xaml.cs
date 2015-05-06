@@ -131,7 +131,7 @@ namespace Run_Grumpy_Run
 
         public void CompositionTarget_Rendering(object sender, EventArgs e)
         {
-            this.DebugBox.Text = x_player.image.ToString();
+            
             if (this.GameOver == 0)
             {
 
@@ -141,6 +141,7 @@ namespace Run_Grumpy_Run
                 {
                     Random rand = new Random();
                     System.Threading.Thread.Sleep(rand.Next(20));
+                    this.DebugBox.Text = nurse.count.ToString();
                     nurse.MiseAJour();
 
                     if ((nurse.X == x_player.X) && (nurse.Y == x_player.Y))
