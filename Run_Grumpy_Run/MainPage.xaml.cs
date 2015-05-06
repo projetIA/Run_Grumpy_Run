@@ -65,9 +65,9 @@ namespace Run_Grumpy_Run
                     }
                     else if (map[i, j] == 3)
                     {
-                        Nurse nurse = new Nurse(j * 32, i * 32, this);
-                        this.LayoutRoot.Children.Add(nurse);
-                        liste_ennemis.Add(nurse);
+                        //Nurse nurse = new Nurse(j * 32, i * 32, this);
+                        //this.LayoutRoot.Children.Add(nurse);
+                        //liste_ennemis.Add(nurse);
                     }
                 }
             }
@@ -98,6 +98,10 @@ namespace Run_Grumpy_Run
         {
         	// TODO : ajoutez ici l'implémentation du gestionnaire d'événements.
             CompositionTarget.Rendering += new EventHandler(CompositionTarget_Rendering);
+
+            Nurse nurse = new Nurse(12 * 32, 4 * 32, this);
+            this.LayoutRoot.Children.Add(nurse);
+            liste_ennemis.Add(nurse);
             
             EtatClavier.Ecouter(this);
             x_player.cnvPere = this.LayoutRoot;
@@ -105,28 +109,32 @@ namespace Run_Grumpy_Run
 
         public void CompositionTarget_Rendering(object sender, EventArgs e)
         {
-            this.DebugBox.Text = x_player.image.ToString();
             if (this.GameOver == 0)
             {
-
+                //mise a jour du joueur
                 x_player.MiseAJour(this);
 
                 foreach (Nurse nurse in liste_ennemis)
                 {
+                    // mise a jour des nurses
                     System.Threading.Thread.Sleep(1);
                     nurse.MiseAJour();
 
+                    // Detection d'une collision entre le joueur et une infirmiere, provoque la game over;
                     if ((nurse.X == x_player.X) && (nurse.Y == x_player.Y))
                     {
-                        this.GameOver = 1;
+                        // Allez, encore une autre partie
+                        this.GameOver = 0;
                     }
                 }
 
+                // arrivé a une positiotn, le joueur a gagné
                 if ((x_player.X == 1376) && (x_player.Y == 64 ))
                 {
+                    // Gagné
                     this.GameOver = 2;
                 }
-                System.Threading.Thread.Sleep(10);
+                System.Threading.Thread.Sleep(20);
 
             }
             else if (this.GameOver == 1)
@@ -149,6 +157,11 @@ namespace Run_Grumpy_Run
                     nurse.Visibility = System.Windows.Visibility.Collapsed;
                 }
             }
+        }
+
+        private void Pause_Click(object sender, RoutedEventArgs e)
+        {
+            System.Threading.Thread.Sleep(2000);
         }
     }
 }
