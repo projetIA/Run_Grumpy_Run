@@ -17,7 +17,7 @@ namespace Run_Grumpy_Run
         private List<murs> liste_fixe;
         private List<Nurse> liste_ennemis;
         public int GameOver;
-        private int[,] map { get; set; }
+        public int[,] map { get; set; }
 
         public MainPage()
         {
@@ -55,9 +55,9 @@ namespace Run_Grumpy_Run
                                     {1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1},
                                     {1,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1},
                                     {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1} };
-            for (int i = 0; i < 25; i++)
+            for (int i = 0; i < 26; i++)
             {
-                for (int j = 0; j < 44; j++)
+                for (int j = 0; j < 45; j++)
                 {
                     if (map[i, j] == 1)
                     {
@@ -116,7 +116,6 @@ namespace Run_Grumpy_Run
 
                     Random rand = new Random();
                     System.Threading.Thread.Sleep(rand.Next(20));
-                    this.DebugBox.Text = nurse.count.ToString();
 
                     // mise a jour des nurses
                     System.Threading.Thread.Sleep(1);
@@ -127,7 +126,7 @@ namespace Run_Grumpy_Run
                     if ((nurse.X == x_player.X) && (nurse.Y == x_player.Y))
                     {
                         // Allez, encore une autre partie
-                        this.GameOver = 0;
+                        this.GameOver = 1;
                     }
                 }
 
