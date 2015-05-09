@@ -134,7 +134,17 @@
     <Resource Include="GameOver.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="nurse1.png" />
     <Resource Include="win.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="test.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\nurse\nurse1.png" />
+    <Resource Include="images\nurse\nurse2.png" />
+    <Resource Include="images\nurse\nurse3.png" />
+    <Resource Include="images\nurse\nurse4.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

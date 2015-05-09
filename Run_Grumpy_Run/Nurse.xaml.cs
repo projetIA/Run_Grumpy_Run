@@ -8,6 +8,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace Run_Grumpy_Run
@@ -45,6 +46,29 @@ namespace Run_Grumpy_Run
         {
             Canvas.SetLeft(this, this.X);
             Canvas.SetTop(this, this.Y);
+            ImageBrush brush = new ImageBrush();
+            switch (this.direction)
+            {
+                case Direction.gauche:                  
+                    brush.ImageSource = new BitmapImage(new Uri(@"images/nurse/nurse2.png", UriKind.Relative));
+                    rect.Fill = brush;
+                    break;
+
+                case Direction.droite:                   
+                    brush.ImageSource = new BitmapImage(new Uri(@"images/nurse/nurse3.png", UriKind.Relative));
+                    rect.Fill = brush;
+                    break;
+
+                case Direction.haut:
+                    brush.ImageSource = new BitmapImage(new Uri(@"images/nurse/nurse4.png", UriKind.Relative));
+                    rect.Fill = brush;
+                    break;
+
+                case Direction.bas:
+                    brush.ImageSource = new BitmapImage(new Uri(@"images/nurse/nurse1.png", UriKind.Relative));
+                    rect.Fill = brush;
+                    break;
+            }
         }
 
         public void MiseAJour()

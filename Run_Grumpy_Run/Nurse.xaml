@@ -7,8 +7,10 @@
     d:DesignHeight="300" d:DesignWidth="400" Width="32" Height="32">
 
     <Canvas x:Name="LayoutRoot" Width="32" Height="32">
-        <Canvas.Background>
-            <ImageBrush ImageSource="nurse.png" Stretch="Uniform"/>
-        </Canvas.Background>
+    	<Rectangle x:Name="rect" Height="32" Stroke="Black" Width="32" StrokeThickness="0">
+    		<Rectangle.Fill>
+    			<ImageBrush Stretch="Fill" ImageSource="nurse1.png"/>
+    		</Rectangle.Fill>
+    	</Rectangle>
     </Canvas>
 </UserControl>
