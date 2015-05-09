@@ -51,47 +51,53 @@ namespace Run_Grumpy_Run
         {
             if (DateTime.Now > horloge.AddMilliseconds(200))
             {
-                this.Detection();
-                //this.Deplacement();
+                horloge = DateTime.Now;
+                if (Detection())
+                {
+
+                }
+                else
+                {
+                    this.Deplacement();
+                }
                 this.Draw();
             }
         }
 
         public void Deplacement()
         {
-            horloge = DateTime.Now;
-            int newX = this.X;
-            int newY = this.Y;
+                int newX = this.X;
+                int newY = this.Y;
 
-            this.ChangeDirection();
-            
-            switch (this.direction)
-            {
-                case Direction.gauche:
-                    newX -= 32;
-                    break;
-                case Direction.droite:
-                    newX += 32;
-                    break;
-                case Direction.haut:
-                    newY -= 32;
-                    break;
-                case Direction.bas:
-                    newY += 32;
-                    break;
-            }
-
-            // Vérification du déplacement
-            if (MP.Zone_OK(newX, newY, 32, 32))
-            {
-                this.X = newX;
-                this.Y = newY;
-            }
-            else
-            {
-                // Si le mob est coincé, une nouvelle direction est générée aleatoirement.
                 this.ChangeDirection();
-            }
+
+                switch (this.direction)
+                {
+                    case Direction.gauche:
+                        newX -= 32;
+                        break;
+                    case Direction.droite:
+                        newX += 32;
+                        break;
+                    case Direction.haut:
+                        newY -= 32;
+                        break;
+                    case Direction.bas:
+                        newY += 32;
+                        break;
+                }
+
+                // Vérification du déplacement
+                if (MP.Zone_OK(newX, newY, 32, 32))
+                {
+                    this.X = newX;
+                    this.Y = newY;
+                }
+                else
+                {
+                    // Si le mob est coincé, une nouvelle direction est générée aleatoirement.
+                    this.ChangeDirection();
+                }
         }
 
         public void ChangeDirection()
@@ -120,122 +126,127 @@ namespace Run_Grumpy_Run
             }
         }
 
-        public void Detection()
+        public bool Detection()
         {
+                horloge = DateTime.Now;
+                // Calcul du vecteur
+                int x = this.MP.x_player.X - this.X;
+                int y = this.MP.x_player.Y - this.Y;
+                int nbcase = Math.Abs(x / 32) + Math.Abs(y / 32);
+                double longeur = Math.Round(Math.Sqrt((y * y) + (x * x)));
+                double diviseur = Math.Round(longeur / nbcase, 2);
+                int adition = Convert.ToInt32(diviseur);
 
-            // Calcul du vecteur
-            int x = this.MP.x_player.X - this.X;
-            int y = this.MP.x_player.Y - this.Y;
-            int nbcase = Math.Abs(x / 32) + Math.Abs(y / 32);
-            double longeur = Math.Round(Math.Sqrt((y * y) + (x * x)));
-            double diviseur = Math.Round(longeur / nbcase , 2);
-            int adition = Convert.ToInt32(diviseur);
 
-
-            // Les infirmieres ont une portée de detection de 10 cases dans toutes les direction
-            if (longeur < 160)
-            {
-                int _x = Math.Abs(x);
-                int _y = Math.Abs(y);
-
-                int caseX = this.X;
-                int caseY = this.Y;
-                int newX = caseX;
-                int newY = caseY;
-                
-                //boucle de parcours du vecteur
-                int i = 0;
-                bool end = false;
-                
-                while (i < nbcase) 
+                // Les infirmieres ont une portée de detection de 10 cases dans toutes les direction
+                if (longeur < 160)
                 {
-                    if (_x > _y && x < 0)
+                    int _x = Math.Abs(x);
+                    int _y = Math.Abs(y);
+
+                    int caseX = this.X;
+                    int caseY = this.Y;
+                    int newX = caseX;
+                    int newY = caseY;
+
+                    //boucle de parcours du vecteur
+                    int i = 0;
+                    bool end = false;
+
+                    while (i < nbcase)
                     {
-                        caseX -= 32;
-                        _y += adition;
-                    }
-                    else if (_x > _y && x > 0)
-                    {
-                        caseX += 32;
-                        _y += adition;
-                    }
-                    else if (_x < _y && y < 0)
-                    {
-                        caseY -= 32;
-                        _x += adition;
-                    }
-                    else if (_x < _y && y > 0)
-                    {
-                        caseY += 32;
-                        _x += adition;
-                    }
-                    else if (_x == _y)
-                    {
-                        Random rand = new Random();
-                        int d = rand.Next(2);
-                        if ( d == 2 && y > 0)
+                        if (_x > _y && x < 0)
                         {
-                            caseY += 32;
-                            _x += adition;
+                            caseX -= 32;
+                            _y += adition;
                         }
-                        else if (d == 2 && y < 0)
+                        else if (_x > _y && x > 0)
+                        {
+                            caseX += 32;
+                            _y += adition;
+                        }
+                        else if (_x < _y && y < 0)
                         {
                             caseY -= 32;
                             _x += adition;
                         }
-                        else
+                        else if (_x < _y && y > 0)
                         {
-                            if ( x < 0)
+                            caseY += 32;
+                            _x += adition;
+                        }
+                        else if (_x == _y)
+                        {
+                            Random rand = new Random();
+                            int d = rand.Next(2);
+                            if (d == 2 && y > 0)
                             {
-                                caseX -= 32;
-                                _y += adition;
-
+                                caseY += 32;
+                                _x += adition;
+                            }
+                            else if (d == 2 && y < 0)
+                            {
+                                caseY -= 32;
+                                _x += adition;
                             }
                             else
                             {
-                                caseX += 32;
-                                _y += adition;
+                                if (x < 0)
+                                {
+                                    caseX -= 32;
+                                    _y += adition;
+
+                                }
+                                else
+                                {
+                                    caseX += 32;
+                                    _y += adition;
+                                }
                             }
+
                         }
+                        else
+                        {
+                            break;
+                        }
+                        if (i == 0)
+                        {
+                            newX = caseX;
+                            newY = caseY;
+                        }
+                        if (!MP.Zone_OK(caseX, caseY, 32, 32))
+                        {
+                            end = true;
+                            break;
+                        }
+                        this.MP.DebugBox.Text = i.ToString();
+                        i++;
+                    }
+                    if (end == false && MP.Zone_OK(newX, newY, 32, 32))
+                    {
+                        this.X = newX;
+                        this.Y = newY;
+                        this.Draw();
+                        return true;
+                    }
 
-                    }
-                    else
-                    {
-                        break;
-                    }
-                    if (i == 0)
-                    {
-                        newX = caseX;
-                        newY = caseY;
-                    }
-                    if (this.MP.map[caseX, caseY] == 1)
-                    {
-                        end = true;
-                        break;
-                    }
-                    this.MP.DebugBox.Text = i.ToString();
-                    i++;
+                    
+
+                    this.MP.DebugBox.Text =
+                    "x: " + x.ToString() + " | y: " + y.ToString()
+                    + Environment.NewLine + "_x: " + _x.ToString() + " | _y: " + _y.ToString()
+                    + Environment.NewLine + direction
+                    + Environment.NewLine + "player X: " + this.MP.x_player.X + " | player Y: " + this.MP.x_player.Y
+                    + Environment.NewLine + "nurse X: " + this.X + " | nurse Y: " + this.Y
+                    + Environment.NewLine + "Longueur: " + longeur
+                    + Environment.NewLine + "caseX: " + caseX + "caseY: " + caseY
+                    + Environment.NewLine + "newX: " + newX + "newY: " + newY
+                    + Environment.NewLine + "nbcase: " + nbcase + "diviseur: " + diviseur + "adition: " + adition;
+
+                    return false;
                 }
-                if (end == false)
-                {
-                    this.X = newX;
-                    this.Y = newY;
-                }
-
-                this.Draw();
-
-                this.MP.DebugBox.Text = 
-                "x: " + x.ToString() + " | y: " + y.ToString()
-                + Environment.NewLine + "_x: " + _x.ToString() + " | _y: " + _y.ToString()
-                + Environment.NewLine + direction
-                + Environment.NewLine + "player X: " + this.MP.x_player.X + " | player Y: " + this.MP.x_player.Y
-                + Environment.NewLine + "nurse X: " + this.X + " | nurse Y: " + this.Y
-                + Environment.NewLine + "Longueur: " + longeur
-                + Environment.NewLine + "caseX: " + caseX + "caseY: " + caseY
-                + Environment.NewLine + "newX: " + newX + "newY: " + newY
-                + Environment.NewLine + "nbcase: " + nbcase + "diviseur: " + diviseur + "adition: " + adition;
-            }
-
+                return false;
+            
         }
 
     }
