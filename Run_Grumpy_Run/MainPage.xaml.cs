@@ -16,6 +16,7 @@ namespace Run_Grumpy_Run
     {
         private List<murs> liste_fixe;
         private List<Nurse> liste_ennemis;
+        private List<objects> liste_objects;
         public int GameOver;
         public int[,] map { get; set; }
 
@@ -28,11 +29,12 @@ namespace Run_Grumpy_Run
             //liste murs
             liste_fixe = new List<murs>();
             liste_ennemis = new List<Nurse>();
+            liste_objects = new List<objects>();
 
             this.map = new int[,] { {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, 
                                     {1,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1},
                                     {1,0,0,0,0,0,0,0,0,0,1,0,0,0,3,0,1,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1},
-                                    {1,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,1,1,0,1,0,0,1,0,0,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,0,1,1,1},
+                                    {1,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,1,1,0,1,0,0,1,0,0,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,7,1,1,1},
                                     {1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,1,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,1},
                                     {1,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,1,0,0,1,0,0,3,0,0,0,1},
                                     {1,1,1,1,1,1,0,1,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1},
@@ -48,12 +50,12 @@ namespace Run_Grumpy_Run
                                     {1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,1,0,0,1,0,0,0,0,0,0,1},
                                     {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,1,0,0,1,1,1,1,1,1,1,1},
                                     {1,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,1,0,0,0,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,0,0,0,0,0,0,1},
-                                    {1,1,1,1,1,1,0,1,1,1,1,1,1,0,1,1,1,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                                    {1,1,1,1,1,1,0,1,1,1,1,1,1,0,1,1,1,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,1},
                                     {1,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1},
-                                    {1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,1,1,1,0,1,1,0,1,1,1,1,0,0,0,0,0,0,1},
+                                    {1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,1,1,1,0,1,1,5,1,1,1,1,0,0,0,6,0,0,1},
                                     {1,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1},
                                     {1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1},
-                                    {1,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1},
+                                    {1,0,0,0,0,0,0,1,4,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1},
                                     {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1} };
             for (int i = 0; i < 26; i++)
             {
@@ -68,6 +70,30 @@ namespace Run_Grumpy_Run
                         Nurse nurse = new Nurse(j * 32, i * 32, this);
                         this.LayoutRoot.Children.Add(nurse);
                         liste_ennemis.Add(nurse);
+                    }
+                    else if (map[i, j] == 4)
+                    {
+                        objects cle = new objects(j * 32, i * 32, "cle");
+                        this.LayoutRoot.Children.Add(cle);
+                        liste_objects.Add(cle);
+                    }
+                    else if (map[i, j] == 5)
+                    {
+                        objects porte = new objects(j * 32, i * 32, "door");
+                        this.LayoutRoot.Children.Add(porte);
+                        liste_objects.Add(porte);
+                    }
+                    else if (map[i, j] == 6)
+                    {
+                        objects R2D2 = new objects(j * 32, i * 32, "R2D2");
+                        this.LayoutRoot.Children.Add(R2D2);
+                        liste_objects.Add(R2D2);
+                    }
+                    else if (map[i, j] == 7)
+                    {
+                        objects Ronflex = new objects(j * 32, i * 32, "Ronflex");
+                        this.LayoutRoot.Children.Add(Ronflex);
+                        liste_objects.Add(Ronflex);
                     }
                 }
             }
@@ -91,6 +117,13 @@ namespace Run_Grumpy_Run
                     return false;
                 }
             }
+            foreach (objects objects in liste_objects)
+            {
+                if ((objects.X == _x) && (objects.Y == _y) && !(objects.etat))
+                {
+                    return false;
+                }
+            }
             return true;
         }
 
@@ -110,6 +143,36 @@ namespace Run_Grumpy_Run
             {
                 //mise a jour du joueur
                 x_player.MiseAJour(this);
+
+                //mise à jour objects
+                foreach (objects objects in liste_objects)
+                {
+                    objects.MiseAJour(x_player.X , x_player.Y);
+                    // clé trouvé on enlève les portes
+                    if (objects.type == "cle" && objects.etat)
+                    {
+                        this.door.Visibility = System.Windows.Visibility.Collapsed;
+                        this.door2.Visibility = System.Windows.Visibility.Collapsed;
+                        foreach (objects liste in liste_objects)
+                        {
+                            if (liste.type == "door")
+                            {
+                                liste.etat = true;
+                            }
+                        }
+                    }
+                    // R2 trouvé on enlève Ronflex
+                    if (objects.type == "R2D2" && objects.etat)
+                    {
+                        foreach (objects liste in liste_objects)
+                        {
+                            if (liste.type == "Ronflex")
+                            {
+                                liste.etat = true;
+                            }
+                        }
+                    }
+                }
 
                 foreach (Nurse nurse in liste_ennemis)
                 {
@@ -163,6 +226,11 @@ namespace Run_Grumpy_Run
 
         private void Pause_Click(object sender, RoutedEventArgs e)
         {
+        }
+
+        private void _try_Click(object sender, RoutedEventArgs e)
+        {
+            //this.DataContext.
         }
     }
 }

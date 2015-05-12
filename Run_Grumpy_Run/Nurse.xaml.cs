@@ -73,17 +73,17 @@ namespace Run_Grumpy_Run
 
         public void MiseAJour()
         {
-            if (DateTime.Now > horloge.AddMilliseconds(200))
+            if (DateTime.Now > horloge.AddMilliseconds(250))
             {
                 horloge = DateTime.Now;
-                if (Detection())
+                /*if (Detection())
                 {
 
                 }
                 else
                 {
                     this.Deplacement();
-                }
+                }*/
                 this.Draw();
             }
         }
@@ -152,7 +152,6 @@ namespace Run_Grumpy_Run
 
         public bool Detection()
         {
-                horloge = DateTime.Now;
                 // Calcul du vecteur
                 int x = this.MP.x_player.X - this.X;
                 int y = this.MP.x_player.Y - this.Y;

@@ -86,6 +86,9 @@
     <Compile Include="Nurse.xaml.cs">
       <DependentUpon>Nurse.xaml</DependentUpon>
     </Compile>
+    <Compile Include="objects.xaml.cs">
+      <DependentUpon>objects.xaml</DependentUpon>
+    </Compile>
     <Compile Include="player.xaml.cs">
       <DependentUpon>player.xaml</DependentUpon>
     </Compile>
@@ -104,6 +107,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="objects.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="player.xaml">
       <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
@@ -113,6 +120,9 @@
     <None Include="Properties\AppManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="door2.png" />
+    <Resource Include="images\objects\cle.png" />
+    <Resource Include="images\objects\door2.png" />
     <Resource Include="images\player\grumpy1.png" />
     <Resource Include="images\player\grumpy2.png" />
     <Resource Include="images\player\grumpy3.png" />
@@ -135,16 +145,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="nurse1.png" />
+    <Resource Include="images\objects\R2D2.png" />
     <Resource Include="win.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="test.mp3" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\nurse\nurse1.png" />
     <Resource Include="images\nurse\nurse2.png" />
     <Resource Include="images\nurse\nurse3.png" />
     <Resource Include="images\nurse\nurse4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\objects\door.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="images\objects\Ronflex.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
