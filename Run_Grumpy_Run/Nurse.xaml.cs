@@ -76,14 +76,14 @@ namespace Run_Grumpy_Run
             if (DateTime.Now > horloge.AddMilliseconds(250))
             {
                 horloge = DateTime.Now;
-                /*if (Detection())
+                if (Detection())
                 {
 
                 }
                 else
                 {
                     this.Deplacement();
-                }*/
+                }
                 this.Draw();
             }
         }
